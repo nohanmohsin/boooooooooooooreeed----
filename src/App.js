@@ -8,16 +8,16 @@ function App() {
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
-  const [filteredTodos, setFilteredTodos] = useState([])
+  const [filteredTodos, setFilteredTodos] = useState([]);
   useEffect(() => {
-    filterHandler() 
-  }, [todos, status])
+    filterHandler()
+  }, [todos, status]);
   function filterHandler(){
     switch(status){
-      case 'completed':
+      case "completed":
         setFilteredTodos(todos.filter(todo => todo.completed === true));
         break;
-      case 'uncompleted':
+      case "uncompleted":
         setFilteredTodos(todos.filter(todo => todo.completed === false));
         break;
       default:
@@ -31,7 +31,7 @@ function App() {
         <h1> Todo List</h1>
       </header>
       <Form todos={todos} setTodos={setTodos} setInputText={setInputText} inputText={inputText} status={status} setStatus={setStatus}/>
-      <Todolist todos={todos} setTodos={setTodos}/>
+      <Todolist todos={todos} setTodos={setTodos} filteredTodos={filteredTodos} setFilteredTodos={setFilteredTodos}/>
     </div> 
   );
 }
